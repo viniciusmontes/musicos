@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios, { AxiosRequestConfig } from "axios";
 import Table from "../../components/Table";
-
 
 const addresses: string[] = [
   "192.168.1.11",
@@ -16,7 +15,7 @@ const addresses: string[] = [
   "192.168.1.20",
 ];
 
-const Home: React.FC = () => {
+export default function Home() {
   const [address, setAddress] = useState<string>("");
 
   const requestIp = async (ip: string) => {
@@ -48,6 +47,4 @@ const Home: React.FC = () => {
       ))}
     </div>
   );
-};
-
-export default Home;
+}

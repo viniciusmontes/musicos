@@ -1,5 +1,4 @@
-import React from 'react';
-import axios, { AxiosRequestConfig } from 'axios';
+import axios, { AxiosRequestConfig } from "axios";
 
 interface ButtonProps {
   address: string;
@@ -8,17 +7,22 @@ interface ButtonProps {
   color: number[];
 }
 
-const Button: React.FC<ButtonProps> = ({ address, text, styleClass, color }) => {
+export default function Button({
+  address,
+  text,
+  styleClass,
+  color,
+}: ButtonProps) {
   const handleClick = async () => {
     const config: AxiosRequestConfig = {
       url: `http://${address}/win&FP=0&FX=${color[4]}&SX=${color[5]}&IX=${color[6]}&R=${color[0]}&G=${color[1]}&B=${color[2]}&A=${color[3]}`,
-      method: 'GET',
+      method: "GET",
     };
     try {
       const response = await axios(config);
       console.log(response.data);
     } catch (error) {
-      console.error('Error fetching IP:', error);
+      console.error("Error fetching IP:", error);
     }
   };
 
@@ -27,6 +31,4 @@ const Button: React.FC<ButtonProps> = ({ address, text, styleClass, color }) => 
       {text}
     </button>
   );
-};
-
-export default Button;
+}
